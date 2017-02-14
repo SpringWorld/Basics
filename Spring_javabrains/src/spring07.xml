@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="parenttriangle" class="com.rudra.spring07.Triangle" abstract="true">   <!-- abstract="true" will help in not creating the object of the parenttriangle -->
+		<property name="points" >
+			<list>
+				<ref bean="Point1" />	
+				<ref bean="Point4" />	
+			</list>
+		</property>
+	</bean>
+	<!-- merge = "true" attribute with collections let the values to be merged , in case if not defined will override the values in collections -->
+	<bean id="triangle1" class="com.rudra.spring07.Triangle" parent="parenttriangle">
+		<property name="points" >
+			<list merge="true">
+				
+				<ref bean="Point2" />	
+				<ref bean="Point3" />	
+				
+			</list>
+		</property>
+	</bean>
+	<bean id="triangle2" class="com.rudra.spring07.Triangle" parent="parenttriangle">
+		<property name="points" >
+			<list merge="true">
+				<ref bean="Point1" />	
+				<ref bean="Point2" />	
+				<ref bean="Point3" />	
+				<ref bean="Point4" />	
+			</list>
+		</property>
+	</bean>	
+	<bean id="triangle3" class="com.rudra.spring07.Triangle" parent="parenttriangle">
+		<property name="points" >
+			<list >
+				<ref bean="Point1" />	
+				<ref bean="Point2" />	
+				<ref bean="Point3" />	
+				<ref bean="Point4" />	
+			</list>
+		</property>
+	</bean>	
+	<bean id="Point1" class="com.rudra.spring07.Point">
+		<property name="x" value="0"></property>		
+		<property name="y" value="0"></property>			
+	</bean>
+	<bean id="Point2" class="com.rudra.spring07.Point">
+		<property name="x" value="10"></property>		
+		<property name="y" value="-5"></property>			
+	</bean>
+	<bean id="Point3" class="com.rudra.spring07.Point">
+		<property name="x" value="15"></property>		
+		<property name="y" value="3"></property>			
+	</bean>
+	<bean id="Point4" class="com.rudra.spring07.Point">
+		<property name="x" value="-10"></property>		
+		<property name="y" value="-5"></property>			
+	</bean>
+</beans>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="triangle" class="com.rudra.spring02.Triangle">
+					<!-- Constructor Injection -->
+	<!--when there is a case of the constructor overloading we must opt for the type 
+	parameter also in order to avoid the ambiguity
+				as in all the cases the value passed to the constructors in form of string  -->
+						 <!-- Type based injection  -->
+		<constructor-arg  type="java.lang.String" value="Equilateral"></constructor-arg>
+		<constructor-arg  type="int" value="25"></constructor-arg>
+		
+					<!-- 	 Index Based Injection -->
+	<!-- <constructor-arg  index="0" value="Equilateral"></constructor-arg>
+		<constructor-arg  index="1" value="25"></constructor-arg>	 -->
+	</bean>
+</beans>

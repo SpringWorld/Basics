@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd"> -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+    http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+	
+	<!--  for enabling the annotations -->
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+ 	
+ 	<!-- for custom annotations like @Qualifier we have to use this bean -->
+ 	<bean id="customAutowireConfigurer" class="org.springframework.beans.factory.annotation.CustomAutowireConfigurer">
+			<property name="customQualifierTypes">
+   					 <set>
+      				  <value>org.springframework.beans.factory.annotation.Qualifier</value>
+   					</set>
+			</property>
+	</bean>
+ 	
+ 	<bean id="car1" class="com.rudra.spring21.Car"/>
+	<bean id="e1"  class="com.rudra.spring21.Engine">
+		<property name="modelYear" value="2016"></property>
+	</bean>
+	<bean id="e2" class="com.rudra.spring21.Engine" >
+		<property name="modelYear" value="2015"></property>
+	</bean>
+</beans>
+

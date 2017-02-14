@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd"> -->
+
+<beans 
+	default-init-method="init"
+	default-destroy-method="destroy"
+	xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+    http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+	
+ <!-- 	<bean id="car1" class="com.rudra.spring24.Car" ></bean> -->
+ 	
+ 	<bean id="car1" class="com.rudra.spring32.Car"></bean>
+ 	<bean id="car2" class="com.rudra.spring32.Car2"></bean>
+ 	<bean id="car3" class="com.rudra.spring32.Car3"></bean>
+ 	<bean id="car4" class="com.rudra.spring32.Car4"></bean>
+</beans>
+

@@ -1,0 +1,13 @@
+package com.Spring.IOC1;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class TestInvoker {
+
+	public static void main(String[] args){
+		ApplicationContext apc = new ClassPathXmlApplicationContext("resources/car.xml");
+		Car car1=(Car) apc.getBean("car1");
+		car1.carDetails();
+	}
+}

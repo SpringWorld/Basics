@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+					<!-- Bean Definition Inheritance -->
+<beans>
+
+	<bean id="parenttriangle" class="com.rudra.spring06.Triangle">
+		<property name="pointA" ref="pointA"></property>
+	</bean>
+	<bean id="triangle1" class="com.rudra.spring06.Triangle" parent="parenttriangle">
+		<property name="pointB" ref="pointB"></property>
+		<property name="pointC" ref="pointC"></property>
+	</bean>
+	
+	<bean id="triangle2" class="com.rudra.spring06.Triangle" parent="parenttriangle">
+		<property name="pointC" ref="pointC"></property>
+	</bean>
+<!-- 	      so in the case of triangle2 , we will encounter exception b/c the value of the pointB is not getting filled  -->
+	<bean id="pointA" class="com.rudra.spring06.Point">
+		<property name="x" value="0"></property>		
+		<property name="y" value="0"></property>			
+	</bean>
+	
+	<bean id="pointB" class="com.rudra.spring06.Point">
+		<property name="x" value="10"></property>		
+		<property name="y" value="5"></property>			
+	</bean>
+	
+	<bean id="pointC" class="com.rudra.spring06.Point">
+		<property name="x" value="-2"></property>		
+		<property name="y" value="7"></property>			
+	</bean>
+		
+</beans>

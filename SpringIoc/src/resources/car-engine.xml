@@ -1,0 +1,14 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+		"http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+		
+<beans>
+		<bean id="car1" class="com.Spring.IOC1.Car">
+			<property name="carName" value="Audi"></property>
+			<property name="engine">
+				<!-- this is inner-bean approach , creates instance object and can't be reused  -->
+				<bean class="com.Spring.IOC1.Engine">
+					<property name="modelYear" value="2016"></property>
+				</bean>
+			</property>
+		</bean>
+</beans>		

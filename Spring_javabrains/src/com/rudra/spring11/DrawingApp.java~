@@ -1,0 +1,47 @@
+package com.rudra.spring11;
+
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.io.FileSystemResource;
+
+
+public class DrawingApp {
+
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	/*	
+	 * [without spring the initiation]
+	 * 
+	 * Triangle triangle = new Triangle();
+	 */	
+	/*	
+		[using the BeanFactory]
+		BeanFactory factory = new XmlBeanFactory(new FileSystemResource("spring.xml"));
+	*/
+	/*
+	 * [using ApplicationContext]  => you have to move the spring.xml in the classpath (here moved to the src directory)
+	 
+	 	ApplicationContext context = new ClassPathXmlApplicationContext("spring07.xml");
+	 */
+		
+		/*		Lifecycle callbacks
+		 * 	spring provides the methods(callbacks) which gets executed at the start of the bean and once they are destroyed.
+		 * 	in order to close the context object , we have to use the AbstractApplicationContext class
+		 *  
+		 * [using the AbstractApplicationContext]=>
+		 * 
+		 * AbstractApplicationContext context = new ClassPathXmlApplicationContext("spring08.xml");
+
+		*/
+		AbstractApplicationContext context = new ClassPathXmlApplicationContext("spring11.xml");
+		
+		Triangle triangle = (Triangle)context.getBean("triangle");
+		
+		triangle.draw();
+	}
+
+}

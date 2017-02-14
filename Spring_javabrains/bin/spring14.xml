@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+ -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:annotation-config/>
+	<!-- <bean id="triangle" class="com.rudra.spring14.Triangle">
+		<property name="pointA" ref="Point1"></property>
+		<property name="pointB" ref="Point2"></property>
+		
+		   we can choose the inner-bean population method ... in case if that bean is associated with one bean alone
+		   and don't get called any where else
+		<property name="pointC">
+				<bean class="com.rudra.spring14.Point">
+					<property name="x" value="-2"></property>		
+					<property name="y" value="7"></property>			
+				</bean>
+		</property>
+	</bean> -->
+	<bean id="Point1" class="com.rudra.spring14.Point">
+		
+		<property name="x" value="0"></property>		
+		<property name="y" value="0"></property>			
+	</bean>
+	
+	<bean id="Point2" class="com.rudra.spring14.Point">
+		<qualifier value="circleRelated" />
+		<property name="x" value="10"></property>		
+		<property name="y" value="5"></property>			
+	</bean>
+	
+	<bean id="circle" class="com.rudra.spring14.Circle">
+		<!-- <property name="center" ref="Point2"></property> -->
+	</bean>	
+	
+	<!-- <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/> -->
+	
+</beans>

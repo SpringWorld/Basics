@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd"> -->
+
+<beans 
+	default-init-method="init"
+	default-destroy-method="destroy"
+	xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+    http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+	
+ <!-- lookup for car interface	-->
+ 	<bean id="car" class="com.rudra.spring33.Car">
+ 		<lookup-method name="myCarEngine" bean="engine1"/>
+ 	</bean>
+ 	<bean id="engine1" class="com.rudra.spring33.Engine">
+ 		<property name="engineName" value="Audi-Engine"></property>
+ 	</bean>
+ <!-- lookup for Bus abstract class	-->	
+ 	<bean id="bus" class="com.rudra.spring33.Bus">
+ 		<lookup-method name="myBusEngine" bean="engine2"/>
+ 	</bean>
+ 	<bean id="engine2" class="com.rudra.spring33.Engine">
+ 		<property name="engineName" value="Mercedeze-Engine"></property>
+ 	</bean>
+ <!-- lookup for Truck concrete class	-->	
+ 	<bean id="truck" class="com.rudra.spring33.Truck">
+ 	
+ 		<!-- remove the comment in order to override the existing value
+ 		<lookup-method name="myTruckEngine" bean="engine3"/> --> 
+ 	</bean>
+ 	<bean id="engine3" class="com.rudra.spring33.Engine">
+ 		<property name="engineName" value="Eicher-Engine"></property>
+ 	</bean>
+</beans>
+

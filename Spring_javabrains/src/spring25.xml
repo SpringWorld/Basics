@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd"> -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+    http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+	
+ <!-- 	<bean id="car1" class="com.rudra.spring24.Car" ></bean> -->
+ 	
+ 	<bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+ 		<property name="staticMethod">
+ 			<value>com.rudra.spring25.CarFactory.setCarName</value>
+ 		</property>
+ 		<property name="arguments">
+ 			<list>
+ 				<value>com.rudra.spring25.Audi</value>
+ 			</list>
+ 		</property>
+ 	</bean>
+ 	
+ 	<bean id="carFac" class="com.rudra.spring25.CarFactory" factory-method="getInstance"></bean>
+ <!-- 	<bean id="car1" class="com.rudra.spring25.Car" factory-bean="carFac" ></bean> -->
+ 	
+</beans>
+

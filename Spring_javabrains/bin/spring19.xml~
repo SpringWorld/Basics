@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+    http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+	<!-- for making property definition mandatory , @Required annot. can be used.
+	in order to activate the @Required annot. we must initialize the 
+		"org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor".
+	 -->
+	<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"></bean> 
+	<bean id="car1" class="com.rudra.spring19.Car" depends-on="engine1">
+		<property name="carNames">
+			<util:list list-class="java.util.Vector">
+				<value>Benz</value>
+				<value>Ferrari</value>
+				<value>Audi</value>
+			</util:list>
+		</property>		
+		<property name="carModels">
+			<util:set set-class="java.util.TreeSet">
+				<value>Benz-classic-400</value>
+				<value>Ferrari-speedo</value>
+				<value>Audi-200D</value>
+			</util:set>
+		</property>
+		<property name="carColors">
+			<util:map map-class="java.util.Hashtable">
+				<entry key="Benz" value="Blue"></entry>
+				<entry key="Ferrari" value="Black"></entry>
+				<entry key="Audi" value="White"></entry>
+			</util:map>
+		</property>
+		<property name="drivers">
+			<props>
+				<prop key="Benz">jonny</prop>
+				<prop key="Ferrari">ron</prop>
+				<prop key="Audi">john</prop>
+			</props>
+		</property>
+		<!-- getting the properties file data from another properties file-->
+		<property name="driversFromFile">
+			<util:properties location="classpath:drivers.properties"></util:properties>
+		</property>
+		<property name="location" value="Malaysia"></property>
+		<property name="engine" ref="engine1"></property>				
+	</bean>
+	<bean id="engine1" class="com.rudra.spring19.Engine" >
+		<property name="modelYear" value="2016"></property>
+	</bean>
+</beans>
+

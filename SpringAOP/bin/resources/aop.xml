@@ -1,0 +1,45 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+			"http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+			
+<beans>
+	<bean id="b" class="business.Bank" />
+	<bean id="lbs" class="services.LogBeforeService" />
+	<bean id="l_around_s" class="services.LogAroundService" />
+	<bean id="las" class="services.LogAfterService" />
+	<bean id="lfe" class="services.LogForException" />
+	
+	<bean id="depositepointcut" class="pointcut.DepositeMethodPointCut"/>
+	
+	<bean id="l_around_s_pointcutadvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="advice" ref="l_around_s"></property>
+		<property name="pointcut" ref="depositepointcut"></property>
+	</bean>
+	<bean id="lbs_pointcutadvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="advice" ref="lbs"></property>
+		<property name="pointcut" ref="depositepointcut"></property>
+	</bean>
+	<bean id="las_pointcutadvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="advice" ref="las"></property>
+		<property name="pointcut" ref="depositepointcut"></property>
+	</bean>
+	<bean id="lfe_pointcutadvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="advice" ref="lfe"></property>
+		<property name="pointcut" ref="depositepointcut"></property>
+	</bean>
+		
+		
+		
+	<bean id="pfb" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target" ref="b"></property>
+		<property name="interceptorNames">
+			<list>
+				<value>l_around_s_pointcutadvisor</value>
+				<value>lbs_pointcutadvisor</value>
+				<value>las_pointcutadvisor</value>
+				<value>lfe_pointcutadvisor</value>
+			</list>
+		</property>
+	
+	</bean>
+
+</beans>

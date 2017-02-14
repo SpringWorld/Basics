@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="triangle" class="com.rudra.spring12.Triangle"> 
+		<property name="points" >
+			<list>
+				<ref bean="Point1" />	
+				<ref bean="Point2" />	
+				<ref bean="Point3" />	
+				<ref bean="Point4" />	
+			</list>
+		</property>
+	</bean>
+	<bean id="Point1" class="com.rudra.spring12.Point">
+		<property name="x" value="${point1.x}"></property>		
+		<property name="y" value="${point1.y}"></property>			
+	</bean>
+	<bean id="Point2" class="com.rudra.spring12.Point">
+		<property name="x" value="10"></property>		
+		<property name="y" value="-5"></property>			
+	</bean>
+	<bean id="Point3" class="com.rudra.spring12.Point">
+		<property name="x" value="15"></property>		
+		<property name="y" value="3"></property>			
+	</bean>
+	<bean id="Point4" class="com.rudra.spring12.Point">
+		<property name="x" value="-10"></property>		
+		<property name="y" value="-5"></property>			
+	</bean>
+	<bean class="com.rudra.spring12.MyBeanFactoryPostProcessor"/>
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" >
+		<property name="location" value="pointsconfig_12.properties"></property>
+	</bean>	
+</beans>

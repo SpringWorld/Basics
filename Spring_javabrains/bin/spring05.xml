@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+					<!-- Autowiring [byName & byType] -->
+<beans>
+	<bean id="triangle" class="com.rudra.spring05.Triangle" autowire="byName">
+		
+	</bean>
+<!-- 	      so the idea here is that if the variable names {in the xml file and the class file }are same then they will mapped automatically -->
+	<bean id="pointA" class="com.rudra.spring05.Point">
+		<property name="x" value="0"></property>		
+		<property name="y" value="0"></property>			
+	</bean>
+	
+	<bean id="pointB" class="com.rudra.spring05.Point">
+		<property name="x" value="10"></property>		
+		<property name="y" value="5"></property>			
+	</bean>
+	
+	<bean id="pointC" class="com.rudra.spring05.Point">
+		<property name="x" value="-2"></property>		
+		<property name="y" value="7"></property>			
+	</bean>
+	
+	
+</beans>
